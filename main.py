@@ -9,6 +9,11 @@ def main():
     
     # Initializes Pygame
     pygame.init()
+    
+    # Creates a clock and initializes delta time variable
+    clock = pygame.time.Clock()
+    dt = 0
+
     # Sets the screen size
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -26,6 +31,12 @@ def main():
 
         # Refreshes the display
         pygame.display.flip()
+
+        # Pauses the game for 1/60th of a second
+        clock.tick(60)
+        # Updates the dt variable in terms of seconds
+        dt = clock.tick(60) / 1000
+        
 
 if __name__ == "__main__":
     main()
