@@ -1,4 +1,5 @@
 import pygame
+from player import Player
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from logger import log_state
 
@@ -10,6 +11,9 @@ def main():
     # Initializes Pygame
     pygame.init()
     
+    # Create a player object
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     # Creates a clock and initializes delta time variable
     clock = pygame.time.Clock()
     dt = 0
@@ -28,6 +32,12 @@ def main():
 
         # Makes the background of the game black
         screen.fill("black")
+
+        # Updates the player
+        player.update(dt)
+
+        # Re-renders the player
+        player.draw(screen)
 
         # Refreshes the display
         pygame.display.flip()
